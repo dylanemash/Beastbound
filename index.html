@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+  <title>Beastbound: Verdant Shards</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0e0f14">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="ui">
+    <div id="title">Beastbound: Verdant Shards</div>
+    <div id="help" class="small">
+      Tap the D-pad to move • Tap buttons to select/back • Walk in tall grass to trigger wild encounters.
+    </div>
+  </div>
+
+  <div id="gameWrap">
+    <canvas id="game" width="640" height="480"></canvas>
+    <div id="panel" class="hidden">
+      <div id="message"></div>
+      <div id="choices"></div>
+    </div>
+  </div>
+
+  <!-- Touch Controls -->
+  <div id="controls">
+    <div id="dpad">
+      <button class="dir up" data-key="ArrowUp">▲</button>
+      <div class="middle">
+        <button class="dir left" data-key="ArrowLeft">◀</button>
+        <button class="dir right" data-key="ArrowRight">▶</button>
+      </div>
+      <button class="dir down" data-key="ArrowDown">▼</button>
+    </div>
+    <div id="ab">
+      <button class="act a" data-key="Enter">A</button>
+      <button class="act b" data-key="Escape">B</button>
+    </div>
+  </div>
+
+  <script>
+    // Register service worker for offline/PWA install
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(console.error);
+      });
+    }
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
